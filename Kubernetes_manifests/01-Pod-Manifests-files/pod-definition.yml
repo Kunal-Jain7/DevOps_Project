@@ -1,0 +1,9 @@
+# This is the API refference for POD --> https://kubernetes.io/docs/concepts/workloads/pods/
+apiVersion: core/v1 #String
+# The kind of resource that you want to create
+kind: Pod #String
+
+metadata:
+
+spec:
+
