@@ -1,12 +1,13 @@
 resource "aws_instance" "web_instance" {
-    ami = "ami-01376101673c89611"
+    ami = "ami-0ad21ae1d0696ad58"
     instance_type = "t2.micro"
     key_name = "terraform_mac_playWithDevOps"
     security_groups = [aws_security_group.ssh-connection.name]
-    tags = {
-      Name = "Web_instance"
-    }
     subnet_id = aws_subnet.amber-pubsub01.id
+    for_each = toset(["jenkins-master, jenkins-slave, ansible"])
+    tags = {
+      Name = "${each.key}"
+    }
 
 }
 
